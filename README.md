@@ -27,15 +27,15 @@
 | category_id | integer | null: false |
 | status_id | integer | null: false |
 | burden_id | integer | null: false |
-| address_id | integer | null: false |
+| prefecture_id | integer | null: false |
 | days_id | integer | null: false |
-| price | string | null: false |
+| price | integer | null: false |
 | user | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :users
-- has_one :orders
+- belongs_to :user
+- has_one :order
 
 ## orders table
 
@@ -46,9 +46,9 @@
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- has_one :delivery addresses
+- belongs_to :user
+- belongs_to :item
+- has_one :delivery address
 
 ## delivery addresses table
 
@@ -56,7 +56,7 @@
 | ----------- | ------ | ----------- |
 | order_id | references | null: false, foreign_key: true |
 | post | string | null: false |
-| prefecture_id |  | null: false |
+| prefecture_id | integer | null: false |
 | town | string | null: false |
 | address | string | null: false |
 | building | string | null: true |
@@ -64,4 +64,4 @@
 
 ### Association
 
-- belongs_to :orders
+- belongs_to :order
