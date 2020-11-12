@@ -50,7 +50,7 @@
 - belongs_to :item
 - has_one :delivery address
 
-## delivery addresses table
+## delivery_addresses table
 
 | Column      | Type   | Options     |
 | ----------- | ------ | ----------- |
@@ -59,7 +59,7 @@
 | prefecture_id | integer | null: false |
 | town | string | null: false |
 | address | string | null: false |
-| building | string | null: true |
+| building | string | |
 | tel | string | null: false |
 
 ### Association
