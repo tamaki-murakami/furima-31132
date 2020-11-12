@@ -6,12 +6,12 @@
 | ----------- | ------ | ----------- |
 | nick_name   | string | null: false |
 | email       | string | null: false |
-| password    | string | null: false |
+| encrypted_password | string | null: false |
 | family_name | string | null: false |
 | last_name   | string | null: false |
 | family_kana | string | null: false |
 | last_kana   | string | null: false |
-| birthday    | string | null: false |
+| birthday    | date | null: false |
 
 ### Association
 
@@ -24,13 +24,13 @@
 | ----------- | ------ | ----------- |
 | name | string | null: false |
 | text | text | null: false |
-| category_id | string | null: false |
-| status_id | string | null: false |
-| burden_id | string | null: false |
-| address_id | string | null: false |
-| days_id | string | null: false |
+| category_id | integer | null: false |
+| status_id | integer | null: false |
+| burden_id | integer | null: false |
+| address_id | integer | null: false |
+| days_id | integer | null: false |
 | price | string | null: false |
-| user_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -41,13 +41,14 @@
 
 | Column      | Type   | Options     |
 | ----------- | ------ | ----------- |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :users
 - belongs_to :items
+- has_one :delivery addresses
 
 ## delivery addresses table
 
@@ -58,7 +59,7 @@
 | prefecture_id |  | null: false |
 | town | string | null: false |
 | address | string | null: false |
-| building | string | null: false |
+| building | string | null: true |
 | tel | string | null: false |
 
 ### Association
