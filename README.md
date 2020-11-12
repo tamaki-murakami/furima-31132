@@ -1,66 +1,24 @@
-# DB 設計
+# README
 
-## users table
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| nick_name   | string | null: false |
-| email       | string | null: false |
-| password    | string | null: false |
-| family_name | string | null: false |
-| last_name   | string | null: false |
-| family_kana | string | null: false |
-| last_kana   | string | null: false |
-| birthday    | string | null: false |
+Things you may want to cover:
 
-### Association
+* Ruby version
 
-- has_many :items
-- has_many :orders
+* System dependencies
 
-## items table
+* Configuration
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| name | string | null: false |
-| text | text | null: false |
-| category_id | string | null: false |
-| status_id | string | null: false |
-| burden_id | string | null: false |
-| address_id | string | null: false |
-| days_id | string | null: false |
-| price | string | null: false |
-| user_id | references | null: false, foreign_key: true |
+* Database creation
 
-### Association
+* Database initialization
 
-- belongs_to :users
-- has_one :orders
+* How to run the test suite
 
-## orders table
+* Services (job queues, cache servers, search engines, etc.)
 
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+* Deployment instructions
 
-### Association
-
-- belongs_to :users
-- belongs_to :items
-
-## delivery addresses table
-
-| Column      | Type   | Options     |
-| ----------- | ------ | ----------- |
-| order_id | references | null: false, foreign_key: true |
-| post | string | null: false |
-| prefecture_id |  | null: false |
-| town | string | null: false |
-| address | string | null: false |
-| building | string | null: false |
-| tel | string | null: false |
-
-### Association
-
-- belongs_to :orders
+* ...
