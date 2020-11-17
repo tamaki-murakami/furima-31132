@@ -3,10 +3,18 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :nick_name, presence: true
-  validates :family_name, presence: true
-  validates :last_name, presence: true
-  validates :family_kana, presence: true
-  validates :last_kana, presence: true
-  validates :birthday, presence: true
+  EISU_MIX_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  WIDE_REGEX = /\A[ァ-ヶー－ぁ-ん一-龥]+\z/.freeze
+  WIDE_KATAKANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
+
+  validates :email, uniqueness: true
+  validates :password, format: { with: EISU_MIX_REGEX, message: 'Include both letters and numbers' }
+  with_options presence: true do
+    validates :nick_name
+    validates :birthday
+    validates :family_name, format: { with: WIDE_REGEX, message: 'Full-width characters' }
+    validates :last_name, format: { with: WIDE_REGEX,  message: 'Full-width characters' }
+    validates :family_kana, format: { with: WIDE_KATAKANA_REGEX,  message: 'Full-width katakana characters' }
+    validates :last_kana, format: { with: WIDE_KATAKANA_REGEX,  message: 'Full-width katakana characters' }
+  end
 end
