@@ -8,13 +8,13 @@ class User < ApplicationRecord
   WIDE_KATAKANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
 
   validates :email, uniqueness: true
-  validates :password, format: { with: EISU_MIX_REGEX, message: 'Include both letters and numbers' }
+  validates :password, format: { with: EISU_MIX_REGEX }
   with_options presence: true do
     validates :nick_name
     validates :birthday
-    validates :family_name, format: { with: WIDE_REGEX, message: 'Full-width characters' }
-    validates :last_name, format: { with: WIDE_REGEX,  message: 'Full-width characters' }
-    validates :family_kana, format: { with: WIDE_KATAKANA_REGEX,  message: 'Full-width katakana characters' }
-    validates :last_kana, format: { with: WIDE_KATAKANA_REGEX,  message: 'Full-width katakana characters' }
+    validates :family_name, format: { with: WIDE_REGEX }
+    validates :last_name, format: { with: WIDE_REGEX, }
+    validates :family_kana, format: { with: WIDE_KATAKANA_REGEX, }
+    validates :last_kana, format: { with: WIDE_KATAKANA_REGEX, }
   end
 end
