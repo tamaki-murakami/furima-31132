@@ -51,7 +51,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    columns = [:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price]
+    columns = [:image, :name, :text, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price]
     params.require(:item).permit(columns).merge(user_id: current_user.id)
   end
 end
