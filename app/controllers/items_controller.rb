@@ -25,30 +25,30 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def update
-    if @item.update(item_params)
-      redirect_to item_path(@item.id)
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @item.update(item_params)
+  #     redirect_to item_path(@item.id)
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @item.destroy
-    redirect_to root_path
-  end
+  # def destroy
+  #   @item.destroy
+  #   redirect_to root_path
+  # end
 
   private
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
+  # def set_item
+  #   @item = Item.find(params[:id])
+  # end
 
-  def move_to_index
-    unless current_user.id == @item.user_id
-      redirect_to action: :index
-    end
-  end
+  # def move_to_index
+  #   unless current_user.id == @item.user_id
+  #     redirect_to action: :index
+  #   end
+  # end
 
   def item_params
     columns = [:image, :name, :text, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price]
