@@ -85,10 +85,15 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Days must be other than 1')
       end
 
+      it 'priceが数字以外のときには登録できないこと' do
+        @item.price = 'hoge'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is not a number')
+      end
       it 'priceが空では登録できないこと' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not a number')
+        expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが299円以下では登録できないこと' do
         @item.price = 299
