@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -40,9 +41,8 @@ class ItemsController < ApplicationController
 
   private
 
-  # def set_item
-  #   @item = Item.find(params[:id])
-  # end
+  def set_item
+  end
 
   # def move_to_index
   #   unless current_user.id == @item.user_id
