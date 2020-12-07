@@ -12,8 +12,8 @@ RSpec.describe OrderForm, type: :model do
       it '各項目が正しい形式で入力されていれば正常に処理されること' do
         expect(@order_form).to be_valid
       end
-      it 'building_name の値が nil でも正常に処理されること' do
-        @order_form.building_name = nil
+      it 'building の値が nil でも正常に処理されること' do
+        @order_form.building = nil
         expect(@order_form).to be_valid
       end
     end
