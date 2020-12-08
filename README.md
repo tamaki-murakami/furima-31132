@@ -51,6 +51,7 @@
 
 ## delivery_addresses table
 
+
 | Column      | Type   | Options     |
 | ----------- | ------ | ----------- |
 | order_id | references | null: false, foreign_key: true |
