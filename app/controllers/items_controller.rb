@@ -25,13 +25,13 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  # def update
-  #   if @item.update(item_params)
-  #     redirect_to item_path(@item.id)
-  #   else
-  #     render :edit
-  #   end
-  # end
+  def update
+    if @item.update(item_params)
+      redirect_to item_path(@item.id)
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @item.destroy
@@ -44,11 +44,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # def move_to_index
-  #   unless current_user.id == @item.user_id
-  #     redirect_to action: :index
-  #   end
-  # end
+  def move_to_index
+    redirect_to action: :index if current_user.id != @item.user_id || @item.order
+  end
 
   def item_params
     columns = [:image, :name, :text, :category_id, :status_id, :burden_id, :prefecture_id, :days_id, :price]
